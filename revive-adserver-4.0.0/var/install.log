@@ -1,0 +1,8 @@
+Installation started 2016-10-24 17:56:24
+Attempting to connect to database adserver with user root
+#! MDB2 Error: Array
+#! connect: [Error message: Access denied for user 'root'@'172.19.0.3' (using password: YES)]
+[Native code: 1045]
+[Native message: Access denied for user 'root'@'172.19.0.3' (using password: YES)]
+
+#! Installation failed to create the database adserver

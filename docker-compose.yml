@@ -1,0 +1,32 @@
+---
+version: '2.0'
+services:
+  db:
+    image: mysql:latest
+    hostname: db
+    environment:
+      MYSQL_ROOT_PASSWORD: "AQrkngXf3fTSPsqFExkqf9wEx7vwqzLc"
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  fpm:
+    build: docker/fpm
+    hostname: fpm
+    volumes:
+      - ./revive-adserver-4.0.0:/movile/adserver
+    links:
+      - "db:db"
+    ports:
+      - "9000"
+
+  web:
+    build: docker/web
+    hostname: web
+    volumes_from:
+      - fpm
+    ports:
+      - "80:80"
+    links:
+      - "fpm:fpm"
